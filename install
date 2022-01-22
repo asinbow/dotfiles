@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm -f ~/.hammerspoon/init.lua
+ln -sf $(pwd)/.hammerspoon/init.lua ~/.hammerspoon/init.lua 
+
