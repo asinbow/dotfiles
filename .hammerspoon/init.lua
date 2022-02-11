@@ -2,6 +2,15 @@
 -- hs.loadSpoon("ReloadConfiguration")
 -- spoon.ReloadConfiguration:start()
 
+local function contains(table, val)
+   for i=1,#table do
+      if table[i] == val then
+         return true
+      end
+   end
+   return false
+end
+
 function map(tbl, f)
   local t = {}
   for k,v in pairs(tbl) do
@@ -48,12 +57,33 @@ function registerTranslations()
         key = "right",
       },
     },
+    {
+      from = {
+        mods = {"ctrl"},
+        key = "n",
+      },
+      to = {
+        key = "down",
+      },
+      app = {"Google Chrome", "Slack"},
+    },
+    {
+      from = {
+        mods = {"ctrl"},
+        key = "p",
+      },
+      to = {
+        key = "up",
+      },
+      app = {"Google Chrome", "Slack"},
+    },
   }
 
   for i, translation in ipairs(translations) do
     hs.hotkey.bind(translation.from.mods, translation.from.key, function()
-      hs.eventtap.keyStroke(translation.to.mods, translation.to.key)
-      print(hs.application.frontmostApplication():name())
+      if not translation.app or contains(translation.app, hs.application.frontmostApplication():name()) then
+        hs.eventtap.keyStroke(translation.to.mods, translation.to.key)
+      end
     end)
   end
 end
