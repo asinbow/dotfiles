@@ -57,6 +57,28 @@ function registerTranslations()
         key = "right",
       },
     },
+    {
+      from = {
+        mods = {"cmd", "shift"},
+        key = "h",
+      },
+      to = {
+        mods = {"ctrl", "shift"},
+        key = "tab",
+      },
+      app = {"Terminal", "Терминал", "Google Chrome"},
+    },
+    {
+      from = {
+        mods = {"cmd", "shift"},
+        key = "l",
+      },
+      to = {
+        mods = {"ctrl"},
+        key = "tab",
+      },
+      app = {"Terminal", "Терминал", "Google Chrome"},
+    },
     --[=====[
     {
       from = {
