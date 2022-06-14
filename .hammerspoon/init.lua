@@ -57,6 +57,7 @@ function registerTranslations()
         key = "right",
       },
     },
+    --[=====[
     {
       from = {
         mods = {"ctrl"},
@@ -77,6 +78,7 @@ function registerTranslations()
       },
       app = {"Google Chrome", "Slack"},
     },
+    --]=====]
   }
 
   for i, translation in ipairs(translations) do
@@ -167,6 +169,16 @@ function registerShortcuts()
       key = "j",
       action = function()
         hs.application.open("BlueJeans")
+      end,
+    },
+    {
+      text = "Okta Open",
+      subText = "Cmd+Shift+O",
+      mods = {"cmd", "shift"},
+      key = "o",
+      action = function()
+        local application = hs.application.open("Google Chrome")
+        hs.eventtap.keyStroke({"cmd", "shift"}, "o", 200, application)
       end,
     },
   }
