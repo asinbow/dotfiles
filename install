@@ -1,5 +1,6 @@
 #!/bin/sh
 
 rm -f ~/.hammerspoon/init.lua
+mkdir -p ~/.hammerspoon
 ln -sf $(pwd)/.hammerspoon/init.lua ~/.hammerspoon/init.lua 
 

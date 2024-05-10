@@ -140,6 +140,24 @@ end
 function registerShortcuts()
   local shortcuts = {
     {
+      text = "Mission Control",
+      subText = "Cmd+Shift+Ctrl+M",
+      mods = {"cmd", "shift", "ctrl"},
+      key = "m",
+      action = function()
+        hs.spaces.toggleMissionControl()
+      end,
+    },
+    {
+      text = "Desktop",
+      subText = "Cmd+Shift+Ctrl+D",
+      mods = {"cmd", "shift", "ctrl"},
+      key = "d",
+      action = function()
+        hs.spaces.toggleShowDesktop()
+      end,
+    },
+    {
       text = "有道云笔记",
       subText = "Cmd+Shift+Ctrl+N",
       mods = {"cmd", "shift", "ctrl"},
