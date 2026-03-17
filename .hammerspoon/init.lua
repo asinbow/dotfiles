@@ -66,7 +66,7 @@ function registerTranslations()
         mods = {"ctrl", "shift"},
         key = "tab",
       },
-      app = {"Terminal", "Терминал", "Google Chrome"},
+      app = {"Terminal", "Терминал", "Google Chrome", "Ghostty"},
     },
     {
       from = {
@@ -77,7 +77,7 @@ function registerTranslations()
         mods = {"ctrl"},
         key = "tab",
       },
-      app = {"Terminal", "Терминал", "Google Chrome"},
+      app = {"Terminal", "Терминал", "Google Chrome", "Ghostty"},
     },
     --[=====[
     {
