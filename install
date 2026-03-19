@@ -4,3 +4,7 @@ rm -f ~/.hammerspoon/init.lua
 mkdir -p ~/.hammerspoon
 ln -sf $(pwd)/.hammerspoon/init.lua ~/.hammerspoon/init.lua 
 
+rm -f ~/.claude/hooks
+mkdir -p ~/.claude/
+ln -sf $(pwd)/.claude/hooks ~/.claude/hooks
+
