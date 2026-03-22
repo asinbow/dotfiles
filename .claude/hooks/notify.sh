@@ -27,7 +27,7 @@ if [ -n "$TRANSCRIPT_PATH" ] && [ -f "$TRANSCRIPT_PATH" ]; then
   TITLE_FILE=$(mktemp)
   MESSAGE_FILE=$(mktemp)
 
-  python3 - "$TRANSCRIPT_PATH" "$TITLE_FILE" "$MESSAGE_FILE" << 'PYEOF'
+  python3 - "$TRANSCRIPT_PATH" "$TITLE_FILE" "$MESSAGE_FILE" <<'PYEOF'
 import sys, json
 
 try:
@@ -93,17 +93,10 @@ PYEOF
   [ -n "$EXTRACTED_MESSAGE" ] && MESSAGE="$EXTRACTED_MESSAGE"
 fi
 
-ACTIVATE_BUNDLE="com.apple.Terminal"
-ACTIVATE_TAB_EXECUTE="echo dummy"
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-  ACTIVATE_BUNDLE="com.apple.Terminal"
-elif [ "$TERM_PROGRAM" = "ghostty" ]; then
+if [ -n "$__CFBundleIdentifier" ]; then
+  ACTIVATE_BUNDLE="$__CFBundleIdentifier"
+else
   ACTIVATE_BUNDLE="com.mitchellh.ghostty"
-  ACTIVATE_TAB_EXECUTE="ghostty ipc activate --tab-id $GHOSTTY_SURFACE_ID"
-elif [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-  ACTIVATE_BUNDLE="com.googlecode.iterm2"
-elif [ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]; then
-  ACTIVATE_BUNDLE="com.jetbrains.intellij"
 fi
 
 /opt/homebrew/bin/terminal-notifier \
@@ -112,4 +105,3 @@ fi
   -sound "Submarine" \
   -group "claude-stop-${SESSION_ID}" \
   -activate "${ACTIVATE_BUNDLE}"
-
